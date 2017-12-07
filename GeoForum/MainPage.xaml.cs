@@ -13,6 +13,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using ViewModels;
+using System.Diagnostics;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -23,15 +24,17 @@ namespace GeoForum
     /// </summary>
     public sealed partial class MainPage : Page
     {
+       
         public MainPage()
         {
             this.InitializeComponent();
-            Organization = new OrganizationViewModel("Office");
+            Organization = new PostsViewModel(/*"Office"*/);
         }
-        public OrganizationViewModel Organization { get; set; }
+        public PostsViewModel Organization { get; set; }
         private void PullToRefreshBox_RefreshInvoked(DependencyObject sender, object args)
         {
-            Organization = new OrganizationViewModel("Office");
+            Organization = new PostsViewModel(/*"Office"*/);
+            Debug.WriteLine("In refresh");
         }
     }
 }

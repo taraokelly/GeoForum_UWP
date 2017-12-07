@@ -169,7 +169,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
             _typeNameTable[9] = "GeoForum.MainPage";
             _typeNameTable[10] = "Windows.UI.Xaml.Controls.Page";
             _typeNameTable[11] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[12] = "ViewModels.OrganizationViewModel";
+            _typeNameTable[12] = "ViewModels.PostsViewModel";
             _typeNameTable[13] = "ViewModels.NotificationBase";
 
             _typeTable = new global::System.Type[14];
@@ -185,7 +185,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
             _typeTable[9] = typeof(global::GeoForum.MainPage);
             _typeTable[10] = typeof(global::Windows.UI.Xaml.Controls.Page);
             _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[12] = typeof(global::ViewModels.OrganizationViewModel);
+            _typeTable[12] = typeof(global::ViewModels.PostsViewModel);
             _typeTable[13] = typeof(global::ViewModels.NotificationBase);
         }
 
@@ -225,6 +225,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
         private object Activate_2_PullToRefreshBox() { return new global::PullToRefresh.UWP.PullToRefreshBox(); }
         private object Activate_6_PullRefreshProgressControl() { return new global::PullToRefresh.UWP.PullRefreshProgressControl(); }
         private object Activate_9_MainPage() { return new global::GeoForum.MainPage(); }
+        private object Activate_12_PostsViewModel() { return new global::ViewModels.PostsViewModel(); }
         private object Activate_13_NotificationBase() { return new global::ViewModels.NotificationBase(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
@@ -301,7 +302,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
                 xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 12:   //  ViewModels.OrganizationViewModel
+            case 12:   //  ViewModels.PostsViewModel
                 userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("ViewModels.NotificationBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
@@ -431,7 +432,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
         private void set_5_MainPage_Organization(object instance, object Value)
         {
             var that = (global::GeoForum.MainPage)instance;
-            that.Organization = (global::ViewModels.OrganizationViewModel)Value;
+            that.Organization = (global::ViewModels.PostsViewModel)Value;
         }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
@@ -478,7 +479,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
                 break;
             case "GeoForum.MainPage.Organization":
                 userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GeoForum.MainPage");
-                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "Organization", "ViewModels.OrganizationViewModel");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "Organization", "ViewModels.PostsViewModel");
                 xamlMember.Getter = get_5_MainPage_Organization;
                 xamlMember.Setter = set_5_MainPage_Organization;
                 break;

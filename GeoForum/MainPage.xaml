@@ -23,14 +23,28 @@
                 <StackPanel HorizontalAlignment="Stretch">
                     <StackPanel Orientation="Vertical">-->
                         <!--<StackPanel Grid.Column="0" Orientation="Vertical">-->
-                    <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked" BorderBrush="LimeGreen" BorderThickness="20">
-                        <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.People, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" MinWidth="250" Margin="5">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="viewModels:PersonViewModel" >
-                                    <TextBlock Text="{x:Bind Name, Mode=OneWay}" />
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
+                    <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">
+                        <ScrollViewer x:Name="MyScrollView">
+                            <StackPanel HorizontalAlignment="Stretch">
+                                <StackPanel Orientation="Vertical">
+                                    <TextBox Text="{x:Bind Organization.Post.content, Mode=TwoWay,FallbackValue=''}" Margin="5" />
+                                    <Button Content="Add" Click="{x:Bind Organization.Add}" Margin="5"/>
+                                    <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" MinWidth="250" Margin="5">
+                                        <ListView.ItemTemplate>
+                                            <DataTemplate x:DataType="viewModels:PostViewModel" >
+                                                <TextBlock Text="{x:Bind content, Mode=OneWay}" />
+                                            </DataTemplate>
+                                        </ListView.ItemTemplate>
+                                    </ListView>
+                                </StackPanel>
+                    <!--<StackPanel Grid.Column="2" Orientation="Vertical" Visibility="{x:Bind Organization.SelectedPerson, Mode=OneWay,Converter={StaticResource ObjectExistsToVisible}}" >
+                                    <TextBox Text="{x:Bind Organization.SelectedPerson.content, Mode=TwoWay,FallbackValue=''}" Margin="5" />
+                                    <TextBox Text="{x:Bind Organization.SelectedPerson.Age, Mode=TwoWay,FallbackValue='0'}"
+                                 Margin="5" />
+                                    <Button Content="Delete" Click="{x:Bind Organization.Delete}" Margin="5"/>
+                                </StackPanel>-->
+                            </StackPanel>
+                        </ScrollViewer>
                         <pr:PullToRefreshBox.TopIndicatorTemplate>
                             <DataTemplate>
                                 <pr:PullRefreshProgressControl Progress="{Binding}"

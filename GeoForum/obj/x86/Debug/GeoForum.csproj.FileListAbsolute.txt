@@ -111,7 +111,6 @@ c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\De
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\System.Xml.XDocument.dll
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\System.Xml.XmlDocument.dll
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\System.Xml.XmlSerializer.dll
-c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\GeoForum.csprojResolveAssemblyReference.cache
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\App.g.i.cs
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\App.g.cs
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\MainPage.g.i.cs
