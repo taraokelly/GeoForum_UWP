@@ -21,9 +21,8 @@ namespace ViewModels
         {
             // New Posts Object.
             Posts_Obj = new Posts();
-
-            _SelectedIndex = -1;
-
+            // Set SelectedIndex to out of scope index.
+            //_SelectedIndex = -1;
             // Call async method to get posts.
             GetPosts();
 
@@ -43,7 +42,7 @@ namespace ViewModels
             set { SetProperty(ref _Post, value); }
         }
         int _SelectedIndex;
-        public int SelectedIndex
+        /*public int SelectedIndex
         {
             get { return _SelectedIndex; }
             set
@@ -55,7 +54,7 @@ namespace ViewModels
         public PostViewModel SelectedPerson
         {
             get { return (_SelectedIndex >= 0) ? _Posts[_SelectedIndex] : null; }
-        }
+        }*/
         public void Add()
         {
             /*var person = new PostViewModel();
