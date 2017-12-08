@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Collections.ObjectModel;
 using Models;
+using Windows.UI.Core;
+using Windows.UI.Xaml.Input;
 
 namespace ViewModels
 {
@@ -64,12 +66,17 @@ namespace ViewModels
             Posts.Insert(0, person);
             Posts_Obj.Add(person);
             SelectedIndex = Posts.IndexOf(person);*/
-            _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
-            var person = new PostViewModel() { content=Post.content };
-            Posts.Insert(0, person);
-            Posts_Obj.Add(person);
-            _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
-            Post.content = "";
+
+            // Check if string is null or empty before adding
+            if (!string.IsNullOrEmpty(Post.content))
+            {
+                _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
+                var person = new PostViewModel() { content = Post.content };
+                Posts.Insert(0, person);
+                Posts_Obj.Add(person);
+                _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
+                Post.content = "";
+            }
         }
         public void Delete()
         {

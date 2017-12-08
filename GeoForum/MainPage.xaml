@@ -15,54 +15,66 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>-->
-           <!-- <ScrollViewer x:Name="MyScrollView">
+        <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">
+            <ScrollViewer x:Name="MyScrollView">
                 <StackPanel HorizontalAlignment="Stretch">
-                    <StackPanel Orientation="Vertical">-->
-                        <!--<StackPanel Grid.Column="0" Orientation="Vertical">-->
-                    <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">
-                        <ScrollViewer x:Name="MyScrollView">
-                            <StackPanel HorizontalAlignment="Stretch">
-                                <StackPanel Orientation="Vertical">
-                                    <TextBox Text="{x:Bind Organization.Post.content, Mode=TwoWay,FallbackValue=''}" Margin="5" />
-                                    <Button Content="Add" Click="{x:Bind Organization.Add}" Margin="5"/>
-                                    <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" MinWidth="250" Margin="5">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate x:DataType="viewModels:PostViewModel" >
-                                                <TextBlock Text="{x:Bind content, Mode=OneWay}" />
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </StackPanel>
-                    <!--<StackPanel Grid.Column="2" Orientation="Vertical" Visibility="{x:Bind Organization.SelectedPerson, Mode=OneWay,Converter={StaticResource ObjectExistsToVisible}}" >
-                                    <TextBox Text="{x:Bind Organization.SelectedPerson.content, Mode=TwoWay,FallbackValue=''}" Margin="5" />
-                                    <TextBox Text="{x:Bind Organization.SelectedPerson.Age, Mode=TwoWay,FallbackValue='0'}"
-                                 Margin="5" />
-                                    <Button Content="Delete" Click="{x:Bind Organization.Delete}" Margin="5"/>
-                                </StackPanel>-->
+                    <Grid Background="Black" Padding="0,0,0,2">
+                        <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
+                        <Button Name="settingsButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0">
+                            <Viewbox>
+                                <SymbolIcon Symbol="Refresh"/>
+                            </Viewbox>
+                        </Button>
+                    </Grid>
+                    <StackPanel Orientation="Vertical" MaxWidth="750" Margin="10,20,10,0">
+                        <Grid HorizontalAlignment="Stretch">
+                            <StackPanel>
+                                <TextBox Text="{x:Bind Organization.Post.content, Mode=TwoWay,FallbackValue=''}" BorderBrush="DarkGreen" Margin="5"/>
+                                <Button Content="ADD" Click="{x:Bind Organization.Add}" Margin="5" HorizontalAlignment="Center" Foreground="White" Background="Green" BorderBrush="DarkGreen"/>
                             </StackPanel>
-                        </ScrollViewer>
-                        <pr:PullToRefreshBox.TopIndicatorTemplate>
-                            <DataTemplate>
-                                <pr:PullRefreshProgressControl Progress="{Binding}"
-                                                               PullToRefreshText="Pull"
-                                                               ReleaseToRefreshText="Release"/>
-                            </DataTemplate>
-                        </pr:PullToRefreshBox.TopIndicatorTemplate>
-                    </pr:PullToRefreshBox>
-                    <!--<Button Content="Add" Click="{x:Bind Organization.Add}" Margin="5"/>
-                    </StackPanel>
-                    <StackPanel Grid.Column="2" Orientation="Vertical" Visibility="{x:Bind Organization.SelectedPerson, Mode=OneWay,Converter={StaticResource ObjectExistsToVisible}}" >
-                        <TextBox Text="{x:Bind Organization.SelectedPerson.Name, Mode=TwoWay,FallbackValue=''}" Margin="5" />
-                        <TextBox Text="{x:Bind Organization.SelectedPerson.Age, Mode=TwoWay,FallbackValue='0'}"
-                     Margin="5" />
-                        <Button Content="Delete" Click="{x:Bind Organization.Delete}" Margin="5"/>
+                        </Grid>
+                        <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="viewModels:PostViewModel" >
+                                    <Grid>
+                                        <StackPanel >
+                                            <TextBlock TextWrapping="Wrap" FontSize="15" FontWeight="SemiBold" Text="{x:Bind content, Mode=OneWay}" Padding="0,0,0,10" />
+                                            <Grid Margin="0" Padding="0,2.5,0,0" Height="17.5" BorderBrush="LightGray" BorderThickness="0,1,0,0">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="1*" />
+                                                    <ColumnDefinition Width="2*" />
+                                                </Grid.ColumnDefinitions>
+                                                <TextBlock Grid.Column="0" Foreground="Green" FontSize="11" Text="Miles:"  Margin="0" Width="50"/>
+                                                <TextBlock Grid.Column="1" Foreground="Gray" FontSize="11" Text="{x:Bind distance, Mode=OneWay}"/>
+                                            </Grid>
+                                        </StackPanel>
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                            <ListView.ItemContainerStyle>
+                                <Style TargetType="ListViewItem">
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                    <Setter Property="BorderThickness" Value="1" />
+                                    <Setter Property="BorderBrush" Value="LightGray" />
+                                    <Setter Property="Margin" Value="0,0,0,10"/>
+                                    <Setter Property="Padding" Value="11, 10, 11, 5"/>
+                                    <Setter Property="IsHitTestVisible" Value="False"/>
+                                </Style>
+                            </ListView.ItemContainerStyle>
+                        </ListView>
                     </StackPanel>
                 </StackPanel>
-            </ScrollViewer> -->
+            </ScrollViewer>
+            <pr:PullToRefreshBox.TopIndicatorTemplate>
+                <DataTemplate>
+                    <pr:PullRefreshProgressControl Progress="{Binding}"
+                                                               PullToRefreshText="Pull"
+                                                               ReleaseToRefreshText="Release"/>
+                </DataTemplate>
+            </pr:PullToRefreshBox.TopIndicatorTemplate>
+        </pr:PullToRefreshBox>
     </Grid>
 
 </Page>

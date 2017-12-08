@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-07T14:23:17.362</Modified>
+      <Modified>2017-12-08T00:54:18.553</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.exe">
       <PackagePath>entrypoint\GeoForum.exe</PackagePath>
-      <Modified>2017-12-07T14:23:16.441</Modified>
+      <Modified>2017-12-08T00:54:17.818</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\.nuget\packages\Microsoft.CSharp\4.0.0\lib\netcore50\Microsoft.CSharp.dll">
       <PackagePath>Microsoft.CSharp.dll</PackagePath>
@@ -492,7 +492,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.xr.xml">
       <PackagePath>GeoForum.xr.xml</PackagePath>
-      <Modified>2017-12-06T21:17:32.529</Modified>
+      <Modified>2017-12-08T00:54:17.604</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -509,11 +509,11 @@
     <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-07T14:23:17.076</Modified>
+      <Modified>2017-12-08T00:54:18.306</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\GeoForum.exe">
       <PackagePath>GeoForum.exe</PackagePath>
-      <Modified>2017-12-07T14:23:17.357</Modified>
+      <Modified>2017-12-08T00:54:18.549</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
