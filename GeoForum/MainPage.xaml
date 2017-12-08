@@ -46,7 +46,7 @@
                                                     <ColumnDefinition Width="2*" />
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Foreground="Green" FontSize="11" Text="Miles:"  Margin="0" Width="50"/>
-                                                <TextBlock Grid.Column="1" Foreground="Gray" FontSize="11" Text="{x:Bind distance, Mode=OneWay}"/>
+                                                <TextBlock Grid.Column="1" Foreground="Gray" FontSize="11" Text="{x:Bind dis, Mode=OneWay}"/>
                                             </Grid>
                                         </StackPanel>
                                     </Grid>

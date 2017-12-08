@@ -1,6 +1,7 @@
 ﻿using System;
 
-using Data;
+using Models;
+
 namespace ViewModels
 {
     public class PostViewModel : NotificationBase<Post>
@@ -21,20 +22,25 @@ namespace ViewModels
             get { return This.lazy_load; }
             set { SetProperty(This.lazy_load, value, () => This.lazy_load = value); }
         }
-        public Double distance
-        {
-            get { return This.distance; }
-            set { SetProperty(This.distance, value, () => This.distance = value); }
+        public DateTime date {
+            get { return This.date; }
+            set { SetProperty(This.date, value, () => This.date = value); }
         }
-        public Double lng
+ 
+        public Geometry geometry
         {
-            get { return This.lng; }
-            set { SetProperty(This.lng, value, () => This.lng = value); }
+            get { return This.geometry; }
+            set { SetProperty(This.geometry, value, () => This.geometry = value); }
         }
-        public Double lat
+        public int __v
         {
-            get { return This.lat; }
-            set { SetProperty(This.lat, value, () => This.lat = value); }
+            get { return This.__v; }
+            set { SetProperty(This.__v, value, () => This.__v = value); }
+        }
+        public float dis
+        {
+            get { return This.dis; }
+            set { SetProperty(This.dis, value, () => This.dis = value); }
         }
     }
 }

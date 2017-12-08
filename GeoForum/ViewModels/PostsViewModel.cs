@@ -8,24 +8,27 @@ using System.Collections.ObjectModel;
 using Models;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
+using System.Diagnostics;
 
 namespace ViewModels
 {
     public class PostsViewModel : NotificationBase
     {
+        // Posts Model Object holding the real values and their methods to handle them.
         Posts Posts_Obj;
-        public PostsViewModel(/*String name*/)
+
+        public PostsViewModel()
         {
-            Posts_Obj = new Posts(/*name*/);
+            // New Posts Object.
+            Posts_Obj = new Posts();
+
             _SelectedIndex = -1;
-            // Load the database
-            foreach (var person in Posts_Obj.posts)
-            {
-                var np = new PostViewModel(person);
-                np.PropertyChanged += Person_OnNotifyPropertyChanged;
-                _Posts.Add(np);
-            }
+
+            // Call async method to get posts.
+            GetPosts();
+
         }
+        // Observable Collection to hold the post that will be binded to the UI.
         ObservableCollection<PostViewModel> _Posts
         = new ObservableCollection<PostViewModel>();
         public ObservableCollection<PostViewModel> Posts
@@ -33,17 +36,12 @@ namespace ViewModels
             get { return _Posts; }
             set { SetProperty(ref _Posts, value); }
         }
-        PostViewModel _Post = new PostViewModel();//{ content = "", _id = "", lazy_load = "", distance = 0.00, lng = -80, lat = 26 };
+        PostViewModel _Post = new PostViewModel();
         public PostViewModel Post
         {
             get { return _Post; }
             set { SetProperty(ref _Post, value); }
         }
-        /*String _Name;
-        public String Name
-        {
-            get { return Posts_Obj.Name; }
-        }*/
         int _SelectedIndex;
         public int SelectedIndex
         {
@@ -70,6 +68,7 @@ namespace ViewModels
             // Check if string is null or empty before adding
             if (!string.IsNullOrEmpty(Post.content))
             {
+                // Put Data in another object and save.
                 _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
                 var person = new PostViewModel() { content = Post.content };
                 Posts.Insert(0, person);
@@ -78,13 +77,34 @@ namespace ViewModels
                 Post.content = "";
             }
         }
-        public void Delete()
+       /* public void Delete()
         {
             if (SelectedIndex != -1)
             {
                 var person = Posts[SelectedIndex];
                 Posts.RemoveAt(SelectedIndex);
                 Posts_Obj.Delete(person);
+            }
+        }*/
+        public async void GetPosts()
+        {
+            var response = await Posts_Obj.GetPeople();
+            if (response == null)
+            {
+                /*********************************
+                 * TELL USER THERE IS NO DATA TO SHOW
+                 *********************************/
+                Debug.WriteLine("NULL");
+            }
+            else
+            { 
+                // Load the database - Really from the Model that has loaded the db.
+                foreach (var post in Posts_Obj.posts)
+                {
+                    var np = new PostViewModel(post);
+                    np.PropertyChanged += Person_OnNotifyPropertyChanged;
+                    _Posts.Add(np);
+                }
             }
         }
         void Person_OnNotifyPropertyChanged(Object sender, PropertyChangedEventArgs e)

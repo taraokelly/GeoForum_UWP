@@ -4,17 +4,34 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Data;
+using System.Diagnostics;
 
 namespace Models
 {
     public class Posts
     {
         public List<Post> posts { get; set; }
-        //public String Name { get; set; }
-        public Posts(/*String databaseName*/)
+        APIService APIService = new APIService();
+        public Posts()
         {
-            //Name = databaseName;
-            posts = APIService.GetPeople();
+            posts = new List<Post>();
+        }
+        public async Task<List<Post>> GetPeople()
+        {
+            var response = await APIService.GetPeople();
+            if (response == null)
+            {
+                Debug.WriteLine("");
+            }
+            else
+            {
+                foreach (var post in response)
+                {
+                    Debug.WriteLine(post.content);
+                    posts.Add(post);
+                }
+            }
+            return response;
         }
         public void Add(Post person)
         {

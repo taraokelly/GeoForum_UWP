@@ -1,6 +1,8 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.1.0",
+    "Microsoft.AspNet.WebApi.Client": "5.2.3",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
+    "Newtonsoft.Json": "10.0.3",
     "PullToRefresh.UWP": "0.3.4"
   },
   "frameworks": {
