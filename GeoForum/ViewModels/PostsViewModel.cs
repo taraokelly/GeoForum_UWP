@@ -23,7 +23,7 @@ namespace ViewModels
         ObservableCollection<PostViewModel> _Posts;
         PostViewModel _Post;
         bool _IsVisible;
-        int Last_Item;
+        long Last_Item;
 
         #endregion
 
@@ -138,8 +138,16 @@ namespace ViewModels
                     var np = new PostViewModel(post);
                     np.PropertyChanged += Person_OnNotifyPropertyChanged;
                     _Posts.Add(np);
-
                 }
+
+                Last_Item = _Posts.LongCount();
+
+                if (Last_Item % 50 == 0)
+                    IsVisible = true;
+                else
+                    IsVisible = false;
+
+                Debug.WriteLine(Last_Item);
             }
         }
 

@@ -26,12 +26,7 @@ namespace Data
 
         #region Constructor
 
-        public APIService()
-        {
-            this.client = new HttpClient();
-            this.client.DefaultRequestHeaders.Accept.Clear();
-            this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-        }
+        public APIService() { }
 
         #endregion
 
@@ -51,6 +46,12 @@ namespace Data
              new Post() { content="Funnier Boi", _id="923456789", lazy_load="923456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
              new Post() { content="Stop, shite talking will ye", _id="193456789", lazy_load="193456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
              };*/
+
+            this.client = new HttpClient();
+
+            this.client.DefaultRequestHeaders.Accept.Clear();
+
+            this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // Build URL.
             string url = "http://localhost:4000/?lng=-81&lat=26";

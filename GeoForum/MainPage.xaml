@@ -17,7 +17,7 @@
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <!--<pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">-->
-        <ScrollViewer x:Name="MyScrollView">
+        <ScrollViewer x:Name="MyScrollView" ViewChanged="OnScrollViewerViewChanged">
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
                         <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
