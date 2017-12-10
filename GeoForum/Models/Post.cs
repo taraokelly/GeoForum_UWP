@@ -16,10 +16,4 @@ namespace Models
         public int __v { get; set; }
         public float dis { get; set; }
     }
-
-    public class Geometry
-    {
-        public List<float> coordinates { get; set; }
-        public string type { get; set; }
-    }
 }

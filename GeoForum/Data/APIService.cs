@@ -12,9 +12,19 @@ using System.Net.Http.Headers;
 
 namespace Data
 {
+    public interface IAPIService
+    {
+        Task<List<Post>> GetPosts();
+    }
     public class APIService
-    { 
+    {
+        #region Variables
+
         private HttpClient client;
+
+        #endregion
+
+        #region Constructor
 
         public APIService()
         {
@@ -23,7 +33,11 @@ namespace Data
             this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public async Task<List<Post>> GetPeople()
+        #endregion
+
+        #region Methods
+
+        public async Task<List<Post>> GetPosts()
         {
             /*
             Debug.WriteLine("GET for people.");
@@ -37,35 +51,22 @@ namespace Data
              new Post() { content="Funnier Boi", _id="923456789", lazy_load="923456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
              new Post() { content="Stop, shite talking will ye", _id="193456789", lazy_load="193456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
              };*/
+
+            // Build URL.
             string url = "http://localhost:4000/?lng=-81&lat=26";
+
             client.BaseAddress = new Uri(url);
+
             HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
 
             if (response.IsSuccessStatusCode)
             {
-                Debug.WriteLine("Response: SUCCESS");
                 return await response.Content.ReadAsAsync<List<Post>>();
-
             }
             else
             {
-                Debug.WriteLine("Response: NULL");
                 return null;
             }
-        }
-        public static List<Post> GetPeps()
-        {
-            Debug.WriteLine("GET for people.");
-            var list = new List<float>(2);
-            list.Add(-81f);
-            list.Add(26f);
-            Debug.WriteLine(list);
-            return new List<Post>()
-             {
-             new Post() { content="Funny Boi", _id="123456789", lazy_load="123456789", date = new DateTime(), dis= (float)25876.66, geometry = new Geometry { coordinates =  list } },
-             new Post() { content="Funnier Boi", _id="923456789", lazy_load="923456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
-             new Post() { content="Stop, shite talking will ye", _id="193456789", lazy_load="193456789", date = new DateTime(),dis= (float)25876.66 , geometry = new Geometry { coordinates =  list } },
-             };
         }
         public static void Write(Post post)
         {
@@ -82,5 +83,7 @@ namespace Data
         {
             Debug.WriteLine("DELETE post");
         }
+
+        #endregion
     }
 }

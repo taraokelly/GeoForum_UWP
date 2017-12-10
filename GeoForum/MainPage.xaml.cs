@@ -28,12 +28,12 @@ namespace GeoForum
         public MainPage()
         {
             this.InitializeComponent();
-            Organization = new PostsViewModel(/*"Office"*/);
+            Organization = new PostsViewModel();
         }
         public PostsViewModel Organization { get; set; }
+
         private void PullToRefreshBox_RefreshInvoked(DependencyObject sender, object args)
         {
-            Organization = new PostsViewModel(/*"Office"*/);
             Debug.WriteLine("In refresh");
         }
     }

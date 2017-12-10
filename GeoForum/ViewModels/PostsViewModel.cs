@@ -9,40 +9,62 @@ using Models;
 using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
 using System.Diagnostics;
+using Windows.UI.Xaml;
 
 namespace ViewModels
 {
     public class PostsViewModel : NotificationBase
     {
+        #region Variables
+
         // Posts Model Object holding the real values and their methods to handle them.
         Posts Posts_Obj;
+        // Observable Collection to hold the post that will be binded to the UI.
+        ObservableCollection<PostViewModel> _Posts;
+        PostViewModel _Post;
+        bool _IsVisible;
+        int Last_Item;
+
+        #endregion
+
+        #region Constructor
 
         public PostsViewModel()
         {
-            // New Posts Object.
+            IsVisible = false;
             Posts_Obj = new Posts();
+            _Posts = new ObservableCollection<PostViewModel>();
+            _Post = new PostViewModel();
             // Set SelectedIndex to out of scope index.
             //_SelectedIndex = -1;
             // Call async method to get posts.
             GetPosts();
 
         }
-        // Observable Collection to hold the post that will be binded to the UI.
-        ObservableCollection<PostViewModel> _Posts
-        = new ObservableCollection<PostViewModel>();
+
+        #endregion
+
+        #region Getters and Setters
+
+        public bool IsVisible
+        {
+            get { return _IsVisible; }
+            set { SetProperty(ref _IsVisible, value); }
+        }
+
         public ObservableCollection<PostViewModel> Posts
         {
             get { return _Posts; }
             set { SetProperty(ref _Posts, value); }
         }
-        PostViewModel _Post = new PostViewModel();
+
         public PostViewModel Post
         {
             get { return _Post; }
             set { SetProperty(ref _Post, value); }
         }
-        int _SelectedIndex;
-        /*public int SelectedIndex
+        /*int _SelectedIndex;
+        public int SelectedIndex
         {
             get { return _SelectedIndex; }
             set
@@ -55,6 +77,11 @@ namespace ViewModels
         {
             get { return (_SelectedIndex >= 0) ? _Posts[_SelectedIndex] : null; }
         }*/
+
+#endregion
+
+        #region Methods
+
         public void Add()
         {
             /*var person = new PostViewModel();
@@ -76,15 +103,23 @@ namespace ViewModels
                 Post.content = "";
             }
         }
-       /* public void Delete()
+        /* public void Delete()
+         {
+             if (SelectedIndex != -1)
+             {
+                 var person = Posts[SelectedIndex];
+                 Posts.RemoveAt(SelectedIndex);
+                 Posts_Obj.Delete(person);
+             }
+         }*/
+        /*public object IsVisible()
         {
-            if (SelectedIndex != -1)
-            {
-                var person = Posts[SelectedIndex];
-                Posts.RemoveAt(SelectedIndex);
-                Posts_Obj.Delete(person);
-            }
+            return Visibility.Collapsed;
         }*/
+        public void LoadMore()
+        {
+            Debug.WriteLine("LOAD MORE");
+        }
         public async void GetPosts()
         {
             var response = await Posts_Obj.GetPeople();
@@ -103,12 +138,20 @@ namespace ViewModels
                     var np = new PostViewModel(post);
                     np.PropertyChanged += Person_OnNotifyPropertyChanged;
                     _Posts.Add(np);
+
                 }
             }
         }
+
+        #endregion
+
+        #region Event Handlers
+
         void Person_OnNotifyPropertyChanged(Object sender, PropertyChangedEventArgs e)
         {
             Posts_Obj.Update((PostViewModel)sender);
         }
+
+        #endregion
     }
 }

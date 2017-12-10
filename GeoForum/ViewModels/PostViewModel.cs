@@ -6,7 +6,14 @@ namespace ViewModels
 {
     public class PostViewModel : NotificationBase<Post>
     {
+        #region Contructor
+
         public PostViewModel(Post person = null) : base(person) { }
+
+        #endregion
+
+        #region Getters and Setters
+
         public String content
         {
             get { return This.content; }
@@ -42,5 +49,7 @@ namespace ViewModels
             get { return This.dis; }
             set { SetProperty(This.dis, value, () => This.dis = value); }
         }
+
+        #endregion
     }
 }

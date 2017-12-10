@@ -12,11 +12,12 @@
 
     <Page.Resources>
         <converters:ObjectExistsToVisible x:Key="ObjectExistsToVisible" />
+        <converters:BoolToVisibilityConverter x:Key="VisibilityConverter" />
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">
-            <ScrollViewer x:Name="MyScrollView">
+        <!--<pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">-->
+        <ScrollViewer x:Name="MyScrollView">
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
                         <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
@@ -65,17 +66,18 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
+                    <Button Content="LOAD MORE" Click="{x:Bind Organization.LoadMore}" Visibility="{x:Bind Organization.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button>
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <pr:PullToRefreshBox.TopIndicatorTemplate>
+            <!-- <pr:PullToRefreshBox.TopIndicatorTemplate>
                 <DataTemplate>
                     <pr:PullRefreshProgressControl Progress="{Binding}"
                                                                PullToRefreshText="Pull"
                                                                ReleaseToRefreshText="Release"/>
                 </DataTemplate>
             </pr:PullToRefreshBox.TopIndicatorTemplate>
-        </pr:PullToRefreshBox>
+        </pr:PullToRefreshBox> -->
     </Grid>
 
 </Page>

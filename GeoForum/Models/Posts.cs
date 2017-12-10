@@ -10,35 +10,46 @@ namespace Models
 {
     public class Posts
     {
+        #region Variables
+
         public List<Post> posts { get; set; }
-        APIService APIService = new APIService();
+        APIService APIService;
+
+        #endregion
+
+        #region Constructor
+
         public Posts()
         {
             posts = new List<Post>();
+            APIService = new APIService();
         }
+
+        #endregion
+
+        #region Methods
+
         public async Task<List<Post>> GetPeople()
         {
-            var response = await APIService.GetPeople();
-            if (response == null)
-            {
-                Debug.WriteLine("");
-            }
-            else
+            var response = await APIService.GetPosts();
+
+            if (response != null)
             {
                 foreach (var post in response)
                 {
                     Debug.WriteLine(post.content);
-                    posts.Add(post);
+                    //posts.Add(post);
+                    posts.Insert(0, post);
                 }
             }
+
             return response;
         }
         public void Add(Post person)
         {
             if (!posts.Contains(person))
             {
-                // Posts.Add(person);
-                // Insert to top of list.
+                // Insert at top of list.
                 posts.Insert(0, person);
                 APIService.Write(person);
             }
@@ -55,5 +66,7 @@ namespace Models
         {
             APIService.Write(person);
         }
+
+        #endregion
     }
 }

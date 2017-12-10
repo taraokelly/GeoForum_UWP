@@ -187,7 +187,6 @@ c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\De
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\ProjectArchitectures.txt
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\PullToRefresh.UWP.winmd
 c:\users\tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\PullToRefresh.UWP.pri.xml
-C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\GeoForum.csprojResolveAssemblyReference.cache
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Newtonsoft.Json.dll
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\System.Console.dll
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\clrjit.dll
