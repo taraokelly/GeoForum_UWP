@@ -93,7 +93,7 @@ namespace ViewModels
         public async void GetPosts()
         {
             _LoadMore = true;
-
+            Error = false;
             IsVisible = true;
             var response = await Posts_Obj.GetPosts();
             IsVisible = false;
@@ -118,16 +118,14 @@ namespace ViewModels
         {
             if (_LoadMore)
             {
+                Error = false;
                 IsVisible = true;
                 var response = await Posts_Obj.GetMorePosts();
                 IsVisible = false;
 
                 if (response == null)
                 {
-                    /*********************************
-                     * TELL USER THERE IS NO DATA TO SHOW
-                     *********************************/
-                    Debug.WriteLine("NULL");
+                    Error = true;
                 }
                 else
                 {
@@ -147,17 +145,14 @@ namespace ViewModels
             _Posts.Clear();
 
             _LoadMore = true;
-
+            Error = false;
             IsVisible = true;
             var response = await Posts_Obj.RefreshPosts();
             IsVisible = false;
 
             if (response == null)
             {
-                /*********************************
-                 * TELL USER THERE IS NO DATA TO SHOW
-                 *********************************/
-                Debug.WriteLine("NULL");
+                Error = true;
             }
             else
             {
