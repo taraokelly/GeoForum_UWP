@@ -23,9 +23,9 @@ namespace GeoForum
         public MainPage()
         {
             this.InitializeComponent();
-            Organization = new PostsViewModel();
+            PostsVM = new PostsViewModel();
         }
-        public PostsViewModel Organization { get; set; }
+        public PostsViewModel PostsVM { get; set; }
 
         /*private void PullToRefreshBox_RefreshInvoked(DependencyObject sender, object args)
         {
@@ -40,14 +40,14 @@ namespace GeoForum
             if (maxVerticalOffset < 0 ||
                 verticalOffset == maxVerticalOffset)
             {
-                Organization.GetPosts();
+                PostsVM.GetMorePosts();
             }
         }
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
             Debug.WriteLine("Refresh");
-            Organization.RefreshPosts();
+            PostsVM.RefreshPosts();
         }
     }
 }

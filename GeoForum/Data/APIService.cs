@@ -16,9 +16,9 @@ namespace Data
     public interface IAPIService
     {
         Task<List<Post>> GetPosts();
-        
+        Task<List<Post>> GetMorePosts(string urlData);
     }
-    public class APIService
+    public class APIService: IAPIService
     {
         #region Variables
 
@@ -26,6 +26,7 @@ namespace Data
         private string baseUrl = "http://localhost:4000/";
         string latitude;
         string longitude;
+        bool accessAllowed;
 
         #endregion
 
@@ -41,7 +42,7 @@ namespace Data
         {
             var accessStatus = await Geolocator.RequestAccessAsync();
 
-            bool accessAllowed = false;
+            accessAllowed = false;
 
             switch (accessStatus)
             {
@@ -52,11 +53,8 @@ namespace Data
                     var geoLocator = new Geolocator();
                     geoLocator.DesiredAccuracy = PositionAccuracy.Default;
                     Geoposition pos = await geoLocator.GetGeopositionAsync();
-                    string latitude = pos.Coordinate.Point.Position.Latitude.ToString();
-                    string longitude = pos.Coordinate.Point.Position.Longitude.ToString();
-
-                    Debug.WriteLine("LAT: " + latitude);
-                    Debug.WriteLine("LAT: " + longitude);
+                    latitude = pos.Coordinate.Point.Position.Latitude.ToString();
+                    longitude = pos.Coordinate.Point.Position.Longitude.ToString();
 
                     break;
 
@@ -69,6 +67,8 @@ namespace Data
 
             if (!accessAllowed) return null;
 
+            if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude)) return null;
+
             this.client = new HttpClient();
             this.client.DefaultRequestHeaders.Accept.Clear();
             this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
@@ -76,6 +76,7 @@ namespace Data
             // Build URL.
             string url = baseUrl + "?lng=-81&lat=26"; //"http://localhost:4000/?lng=-81&lat=26";
             // Add lng and lat.
+            // string url = baseUrl + "?lng=" + longitude + "&lat=" + latitude;
             client.BaseAddress = new Uri(url);
 
             HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
@@ -89,7 +90,7 @@ namespace Data
                 return null;
             }
         }
-        public static void Write(Post post)
+        public static void AddPost(Post post)
         {
             Debug.WriteLine("Add post");
             var list = new List<float>(2);
@@ -99,10 +100,35 @@ namespace Data
             list.Add(26f);
             // Then set list to equal posts coords
             // Send post in post req
+
         }
-        public static void Delete(Post post)
+        public async Task<List<Post>> GetMorePosts(string urlData)
         {
-            Debug.WriteLine("DELETE post");
+            if (!accessAllowed) return null;
+
+            if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude) || string.IsNullOrEmpty(urlData)) return null;
+
+            this.client = new HttpClient();
+            this.client.DefaultRequestHeaders.Accept.Clear();
+            this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            // Build URL.
+            string url = baseUrl + "?lng=-81&lat=26" + urlData;
+            // Add lng and lat.
+            // Add urlData.
+            // string url = baseUrl + "?lng=" + longitude + "&lat=" + latitude + urlData;
+            client.BaseAddress = new Uri(url);
+
+            HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsAsync<List<Post>>();
+            }
+            else
+            {
+                return null;
+            }
         }
 
         #endregion

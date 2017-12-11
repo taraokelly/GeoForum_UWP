@@ -246,7 +246,7 @@ namespace GeoForum.GeoForum_XamlTypeInfo
             case 3:   //  GeoForum.MainPage
                 userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
                 userType.Activator = Activate_3_MainPage;
-                userType.AddMemberName("Organization");
+                userType.AddMemberName("PostsVM");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -331,15 +331,15 @@ namespace GeoForum.GeoForum_XamlTypeInfo
             return foundXamlType;
         }
 
-        private object get_0_MainPage_Organization(object instance)
+        private object get_0_MainPage_PostsVM(object instance)
         {
             var that = (global::GeoForum.MainPage)instance;
-            return that.Organization;
+            return that.PostsVM;
         }
-        private void set_0_MainPage_Organization(object instance, object Value)
+        private void set_0_MainPage_PostsVM(object instance, object Value)
         {
             var that = (global::GeoForum.MainPage)instance;
-            that.Organization = (global::ViewModels.PostsViewModel)Value;
+            that.PostsVM = (global::ViewModels.PostsViewModel)Value;
         }
 
         private global::Windows.UI.Xaml.Markup.IXamlMember CreateXamlMember(string longMemberName)
@@ -349,11 +349,11 @@ namespace GeoForum.GeoForum_XamlTypeInfo
 
             switch (longMemberName)
             {
-            case "GeoForum.MainPage.Organization":
+            case "GeoForum.MainPage.PostsVM":
                 userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GeoForum.MainPage");
-                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "Organization", "ViewModels.PostsViewModel");
-                xamlMember.Getter = get_0_MainPage_Organization;
-                xamlMember.Setter = set_0_MainPage_Organization;
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "PostsVM", "ViewModels.PostsViewModel");
+                xamlMember.Getter = get_0_MainPage_PostsVM;
+                xamlMember.Setter = set_0_MainPage_PostsVM;
                 break;
             }
             return xamlMember;

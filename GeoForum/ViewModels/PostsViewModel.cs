@@ -24,6 +24,7 @@ namespace ViewModels
         ObservableCollection<PostViewModel> _Posts;
         PostViewModel _Post;
         bool _IsVisible;
+        bool _LoadMore;
         long Last_Item;
 
         #endregion
@@ -64,20 +65,6 @@ namespace ViewModels
             get { return _Post; }
             set { SetProperty(ref _Post, value); }
         }
-        /*int _SelectedIndex;
-        public int SelectedIndex
-        {
-            get { return _SelectedIndex; }
-            set
-            {
-                if (SetProperty(ref _SelectedIndex, value))
-                { RaisePropertyChanged(nameof(SelectedPerson)); }
-            }
-        }
-        public PostViewModel SelectedPerson
-        {
-            get { return (_SelectedIndex >= 0) ? _Posts[_SelectedIndex] : null; }
-        }*/
 
 #endregion
 
@@ -85,44 +72,23 @@ namespace ViewModels
 
         public void Add()
         {
-            /*var person = new PostViewModel();
-            person.PropertyChanged += Person_OnNotifyPropertyChanged;
-            //Posts.Add(person);
-            Posts.Insert(0, person);
-            Posts_Obj.Add(person);
-            SelectedIndex = Posts.IndexOf(person);*/
-
             // Check if string is null or empty before adding
             if (!string.IsNullOrEmpty(Post.content))
             {
                 // Put Data in another object and save.
-                _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
                 var person = new PostViewModel() { content = Post.content };
                 Posts.Insert(0, person);
                 Posts_Obj.Add(person);
-                _Post.PropertyChanged += Person_OnNotifyPropertyChanged;
                 Post.content = "";
             }
         }
-        /* public void Delete()
-         {
-             if (SelectedIndex != -1)
-             {
-                 var person = Posts[SelectedIndex];
-                 Posts.RemoveAt(SelectedIndex);
-                 Posts_Obj.Delete(person);
-             }
-         }*/
-        /*public object IsVisible()
-        {
-            return Visibility.Collapsed;
-        }*/
         public void LoadMore()
         {
             Debug.WriteLine("LOAD MORE");
         }
         public async void GetPosts()
         {
+            _LoadMore = true;
 
             IsVisible = true;
             var response = await Posts_Obj.GetPosts();
@@ -136,13 +102,13 @@ namespace ViewModels
                 Debug.WriteLine("NULL");
             }
             else
-            { 
+            {
+                if (response.LongCount() == 0) _LoadMore = false;
                 // Load the database - Really from the Model that has loaded the db.
                 foreach (var post in Posts_Obj.posts)
                 {
-                    var np = new PostViewModel(post);
-                    np.PropertyChanged += Person_OnNotifyPropertyChanged;
-                    _Posts.Add(np);
+                    var p = new PostViewModel(post);
+                    _Posts.Add(p);
                 }
 
                 Last_Item = _Posts.LongCount();
@@ -150,9 +116,42 @@ namespace ViewModels
             }
         }
 
+        public async void GetMorePosts()
+        {
+            if (_LoadMore)
+            {
+                IsVisible = true;
+                var response = await Posts_Obj.GetMorePosts();
+                IsVisible = false;
+
+                if (response == null)
+                {
+                    /*********************************
+                     * TELL USER THERE IS NO DATA TO SHOW
+                     *********************************/
+                    Debug.WriteLine("NULL");
+                }
+                else
+                {
+                    if (response.LongCount() == 0) _LoadMore = false;
+
+                    foreach (var post in response)
+                    {
+                        var p = new PostViewModel(post);
+                        _Posts.Add(p);
+                    }
+
+                    Last_Item = _Posts.LongCount();
+                    Debug.WriteLine(Last_Item);
+                }
+            }
+        }
+
         public async void RefreshPosts()
         {
             _Posts.Clear();
+
+            _LoadMore = true;
 
             IsVisible = true;
             var response = await Posts_Obj.RefreshPosts();
@@ -167,32 +166,14 @@ namespace ViewModels
             }
             else
             {
+                if (response.LongCount() == 0) _LoadMore = false;
                 // Load the database - Really from the Model that has loaded the db.
                 foreach (var post in Posts_Obj.posts)
                 {
-                    var np = new PostViewModel(post);
-                    np.PropertyChanged += Person_OnNotifyPropertyChanged;
-                    _Posts.Add(np);
+                    var p = new PostViewModel(post);
+                    _Posts.Add(p);
                 }
-
-                Last_Item = _Posts.LongCount();
-
-                /*if (Last_Item % 50 == 0)
-                    IsVisible = true;
-                else
-                    IsVisible = false;*/
-
-                Debug.WriteLine(Last_Item);
             }
-        }
-
-        #endregion
-
-        #region Event Handlers
-
-        void Person_OnNotifyPropertyChanged(Object sender, PropertyChangedEventArgs e)
-        {
-            Posts_Obj.Update((PostViewModel)sender);
         }
 
         #endregion

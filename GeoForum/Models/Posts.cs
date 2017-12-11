@@ -39,7 +39,6 @@ namespace Models
                 {
                     Debug.WriteLine(post.date);
                     posts.Add(post);
-                    //posts.Insert(0, post);
                 }
             }
             return response;
@@ -56,7 +55,41 @@ namespace Models
                 {
                     Debug.WriteLine(post.content);
                     posts.Add(post);
-                    //posts.Insert(0, post);
+                }
+            }
+            return response;
+        }
+        public async Task<List<Post>> GetMorePosts()
+        {
+            string urlData = "";
+            DateTime lastDate = new DateTime();
+            int count = (posts.Count() - 1);
+            
+            for (int i = count; i >= 0; i--)
+            {
+                if(i == count)
+                {
+                    lastDate = posts[i].date;
+                    urlData = "&yr=" + lastDate.Year + "&m=" + (lastDate.Month - 1) + "&d=" + lastDate.Day + "&hr=" + lastDate.Hour + "&mins=" + lastDate.Minute + "&s=" + (lastDate.Second - 1) + "&id=" + posts[i]._id;
+                }
+                else
+                {
+                    int result = DateTime.Compare(lastDate, posts[i].date);
+
+                    if (result == 0)
+                        urlData += "&id=" + posts[i]._id;
+                    else
+                        break;
+                }
+            }
+            var response = await APIService.GetMorePosts(urlData);
+
+            if (response != null)
+            {
+                foreach (var post in response)
+                {
+                    //Debug.WriteLine(post.date);
+                    posts.Add(post);
                 }
             }
             return response;
@@ -67,10 +100,10 @@ namespace Models
             {
                 // Insert at top of list.
                 posts.Insert(0, person);
-                APIService.Write(person);
+                APIService.AddPost(person);
             }
         }
-        public void Delete(Post person)
+        /*public void Delete(Post person)
         {
             if (posts.Contains(person))
             {
@@ -78,10 +111,10 @@ namespace Models
                 APIService.Delete(person);
             }
         }
-        public void Update(Post person)
+        /*public void Update(Post person)
         {
             APIService.Write(person);
-        }
+        }*/
 
         #endregion
     }
