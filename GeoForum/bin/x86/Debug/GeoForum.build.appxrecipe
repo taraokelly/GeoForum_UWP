@@ -397,6 +397,9 @@
     <AppxPackagedFile Include="C:\Users\Tara\.nuget\packages\PullToRefresh.UWP\0.3.4\lib\uap10.0\PullToRefresh.UWP.winmd">
       <PackagePath>PullToRefresh.UWP.winmd</PackagePath>
     </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Images\loading_apple.gif">
+      <PackagePath>Images\loading_apple.gif</PackagePath>
+    </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
     </AppxPackagedFile>

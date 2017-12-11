@@ -21,7 +21,7 @@
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
                         <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
-                        <Button Name="settingsButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0">
+                        <Button Name="refreshButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0" Click="refreshButton_Click">
                             <Viewbox>
                                 <SymbolIcon Symbol="Refresh"/>
                             </Viewbox>
@@ -34,7 +34,7 @@
                                 <Button Content="ADD" Click="{x:Bind Organization.Add}" Margin="5" HorizontalAlignment="Center" Foreground="White" Background="Green" BorderBrush="DarkGreen"/>
                             </StackPanel>
                         </Grid>
-                        <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >
+                        <ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" HorizontalAlignment="Stretch" Margin="5,10,0,5" >
                             <!--<ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >-->
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="viewModels:PostViewModel" >
@@ -66,7 +66,8 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
-                    <Button Content="LOAD MORE" Click="{x:Bind Organization.LoadMore}" Visibility="{x:Bind Organization.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button>
+                    <Image Height="35" Width="35" Source="Images/loading_apple.gif" Visibility="{x:Bind Organization.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Image>
+                    <!-- <Button Content="LOAD MORE" Click="{x:Bind Organization.LoadMore}" Visibility="{x:Bind Organization.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button> -->
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>

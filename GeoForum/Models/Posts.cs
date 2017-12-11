@@ -29,7 +29,7 @@ namespace Models
 
         #region Methods
 
-        public async Task<List<Post>> GetPeople()
+        public async Task<List<Post>> GetPosts()
         {
             var response = await APIService.GetPosts();
 
@@ -37,12 +37,28 @@ namespace Models
             {
                 foreach (var post in response)
                 {
-                    Debug.WriteLine(post.content);
-                    //posts.Add(post);
-                    posts.Insert(0, post);
+                    Debug.WriteLine(post.date);
+                    posts.Add(post);
+                    //posts.Insert(0, post);
                 }
             }
+            return response;
+        }
+        public async Task<List<Post>> RefreshPosts()
+        {
+            posts.Clear();
 
+            var response = await APIService.GetPosts();
+
+            if (response != null)
+            {
+                foreach (var post in response)
+                {
+                    Debug.WriteLine(post.content);
+                    posts.Add(post);
+                    //posts.Insert(0, post);
+                }
+            }
             return response;
         }
         public void Add(Post person)

@@ -15,13 +15,8 @@ using Windows.UI.Xaml.Navigation;
 using ViewModels;
 using System.Diagnostics;
 
-// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
-
 namespace GeoForum
 {
-    /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
-    /// </summary>
     public sealed partial class MainPage : Page
     {
        
@@ -47,6 +42,12 @@ namespace GeoForum
             {
                 Organization.GetPosts();
             }
+        }
+
+        private void refreshButton_Click(object sender, RoutedEventArgs e)
+        {
+            Debug.WriteLine("Refresh");
+            Organization.RefreshPosts();
         }
     }
 }

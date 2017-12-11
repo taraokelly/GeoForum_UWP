@@ -10,6 +10,7 @@ using Windows.UI.Core;
 using Windows.UI.Xaml.Input;
 using System.Diagnostics;
 using Windows.UI.Xaml;
+using Windows.System;
 
 namespace ViewModels
 {
@@ -122,7 +123,11 @@ namespace ViewModels
         }
         public async void GetPosts()
         {
-            var response = await Posts_Obj.GetPeople();
+
+            IsVisible = true;
+            var response = await Posts_Obj.GetPosts();
+            IsVisible = false;
+
             if (response == null)
             {
                 /*********************************
@@ -141,11 +146,41 @@ namespace ViewModels
                 }
 
                 Last_Item = _Posts.LongCount();
+                Debug.WriteLine(Last_Item);
+            }
+        }
 
-                if (Last_Item % 50 == 0)
+        public async void RefreshPosts()
+        {
+            _Posts.Clear();
+
+            IsVisible = true;
+            var response = await Posts_Obj.RefreshPosts();
+            IsVisible = false;
+
+            if (response == null)
+            {
+                /*********************************
+                 * TELL USER THERE IS NO DATA TO SHOW
+                 *********************************/
+                Debug.WriteLine("NULL");
+            }
+            else
+            {
+                // Load the database - Really from the Model that has loaded the db.
+                foreach (var post in Posts_Obj.posts)
+                {
+                    var np = new PostViewModel(post);
+                    np.PropertyChanged += Person_OnNotifyPropertyChanged;
+                    _Posts.Add(np);
+                }
+
+                Last_Item = _Posts.LongCount();
+
+                /*if (Last_Item % 50 == 0)
                     IsVisible = true;
                 else
-                    IsVisible = false;
+                    IsVisible = false;*/
 
                 Debug.WriteLine(Last_Item);
             }

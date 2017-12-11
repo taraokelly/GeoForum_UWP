@@ -21,7 +21,7 @@
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
                         <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
-                        <Button x:ConnectionId='10' Name="settingsButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0">
+                        <Button x:ConnectionId='10' Name="refreshButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0"                            >
                             <Viewbox>
                                 <SymbolIcon Symbol="Refresh"/>
                             </Viewbox>
@@ -34,7 +34,7 @@
                                 <Button x:ConnectionId='9' Content="ADD"                                   Margin="5" HorizontalAlignment="Center" Foreground="White" Background="Green" BorderBrush="DarkGreen"/>
                             </StackPanel>
                         </Grid>
-                        <ListView x:ConnectionId='3' x:Name="MainList"                                                        HorizontalAlignment="Stretch" Margin="5,10,5,5" >
+                        <ListView x:ConnectionId='3' x:Name="MainList"                                                        HorizontalAlignment="Stretch" Margin="5,10,0,5" >
                             <!--<ListView x:Name="MainList" ItemsSource="{x:Bind Organization.Posts, Mode=OneWay}" SelectedIndex="{x:Bind Organization.SelectedIndex, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >-->
                             <ListView.ItemTemplate>
                                 <DataTemplate                                       >
@@ -66,7 +66,8 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
-                    <Button x:ConnectionId='4' Content="LOAD MORE"                                                                                                                                                 ></Button>
+                    <Image x:ConnectionId='4' Height="35" Width="35" Source="Images/loading_apple.gif"                                                                                                          ></Image>
+                    <!-- <Button Content="LOAD MORE" Click="{x:Bind Organization.LoadMore}" Visibility="{x:Bind Organization.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button> -->
                     </StackPanel>
                 </StackPanel>
             </ScrollViewer>
