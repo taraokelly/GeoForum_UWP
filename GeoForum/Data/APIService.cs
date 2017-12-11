@@ -17,6 +17,7 @@ namespace Data
     {
         Task<List<Post>> GetPosts();
         Task<List<Post>> GetMorePosts(string urlData);
+        Task<Post> AddPost(Post post);
     }
     public class APIService: IAPIService
     {
@@ -74,9 +75,8 @@ namespace Data
             this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // Build URL.
-            string url = baseUrl + "?lng=-81&lat=26"; //"http://localhost:4000/?lng=-81&lat=26";
-            // Add lng and lat.
-            // string url = baseUrl + "?lng=" + longitude + "&lat=" + latitude;
+            string url = baseUrl + "?lng=" + longitude +"&lat=" + latitude;
+            
             client.BaseAddress = new Uri(url);
 
             HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
@@ -102,10 +102,8 @@ namespace Data
             this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             // Build URL.
-            string url = baseUrl + "?lng=-81&lat=26" + urlData;
-            // Add lng and lat.
-            // Add urlData.
-            // string url = baseUrl + "?lng=" + longitude + "&lat=" + latitude + urlData;
+            string url = baseUrl + "?lng=" + longitude + "&lat=" + latitude + urlData;
+           
             client.BaseAddress = new Uri(url);
 
             HttpResponseMessage response = await client.GetAsync(client.BaseAddress);
@@ -156,8 +154,8 @@ namespace Data
             this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var list = new List<float>(2);
-            list.Add(-81f);
-            list.Add(26f);
+            list.Add(float.Parse(longitude));
+            list.Add(float.Parse(latitude));
             post.geometry = new Geometry { coordinates = list };
 
             client.BaseAddress = new Uri(baseUrl);
@@ -168,13 +166,10 @@ namespace Data
             if (response.IsSuccessStatusCode)
             {
                 return await response.Content.ReadAsAsync<Post>();
-                /*var res = await response.Content.ReadAsStringAsync();
-                Debug.WriteLine(res);*/
             }
             else
             {
                 return null;
-                //Debug.WriteLine("We done fucked up");
             }
         }
 

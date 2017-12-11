@@ -80,11 +80,11 @@ namespace ViewModels
             if (!string.IsNullOrEmpty(Post.content))
             {
                 // Put Data in another object and save.
-                var p = new PostViewModel() { content = Post.content };
                 var post = new PostViewModel() { content = Post.content };
                 var response = await Posts_Obj.Add(post);
                 if (response != null)
                 {
+                    var p = new PostViewModel() { content = response.content, date = response.date, dis = 0 };
                     Posts.Insert(0, p);
                     Post.content = "";
                 }

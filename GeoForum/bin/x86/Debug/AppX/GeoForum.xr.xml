@@ -65,8 +65,6 @@
       <RootProperty Name="Text" />
       <RootProperty Name="Padding" />
       <RootProperty Name="Foreground" />
-      <RootProperty Name="Margin" />
-      <RootProperty Name="Width" />
       <RootProperty Name="HorizontalAlignment" />
       <RootProperty Name="VerticalAlignment" />
     </RootType>

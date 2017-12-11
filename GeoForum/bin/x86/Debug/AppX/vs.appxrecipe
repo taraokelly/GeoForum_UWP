@@ -28,13 +28,13 @@
     <AppXManifest Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-11T21:30:17.470</Modified>
+      <Modified>2017-12-11T23:04:59.521</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
     <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.exe">
       <PackagePath>entrypoint\GeoForum.exe</PackagePath>
-      <Modified>2017-12-11T21:30:16.566</Modified>
+      <Modified>2017-12-11T23:04:58.739</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\.nuget\packages\Microsoft.AspNet.WebApi.Client\5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll">
       <PackagePath>System.Net.Http.Formatting.dll</PackagePath>
@@ -576,7 +576,7 @@
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.xr.xml">
       <PackagePath>GeoForum.xr.xml</PackagePath>
-      <Modified>2017-12-11T21:27:03.845</Modified>
+      <Modified>2017-12-11T22:25:13.996</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Program Files %28x86%29\Windows Kits\10\UnionMetadata\Windows.winmd">
       <PackagePath>WinMetadata\Windows.winmd</PackagePath>
@@ -593,11 +593,11 @@
     <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-11T21:27:07.030</Modified>
+      <Modified>2017-12-11T22:31:37.367</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\GeoForum.exe">
       <PackagePath>GeoForum.exe</PackagePath>
-      <Modified>2017-12-11T21:30:17.459</Modified>
+      <Modified>2017-12-11T23:04:59.514</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>

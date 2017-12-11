@@ -49,6 +49,11 @@ namespace ViewModels
             get { return This.dis; }
             set { SetProperty(This.dis, value, () => This.dis = value); }
         }
+        public string distance
+        {
+            get { return "Miles: " + Math.Round((This.dis * 0.000621371192), 2); }
+            //set { SetProperty(This.dis, value, () => This.dis = value); }
+        }
 
         #endregion
     }
