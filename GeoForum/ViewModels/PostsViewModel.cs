@@ -25,7 +25,7 @@ namespace ViewModels
         PostViewModel _Post;
         bool _IsVisible;
         bool _LoadMore;
-        long Last_Item;
+        bool _Error;
 
         #endregion
 
@@ -34,12 +34,10 @@ namespace ViewModels
         public PostsViewModel()
         {
             IsVisible = false;
+            _Error = false;
             Posts_Obj = new Posts();
             _Posts = new ObservableCollection<PostViewModel>();
             _Post = new PostViewModel();
-            // Set SelectedIndex to out of scope index.
-            //_SelectedIndex = -1;
-            // Call async method to get posts.
             GetPosts();
 
         }
@@ -54,6 +52,12 @@ namespace ViewModels
             set { SetProperty(ref _IsVisible, value); }
         }
 
+        public bool Error
+        {
+            get { return _Error; }
+            set { SetProperty(ref _Error, value); }
+        }
+
         public ObservableCollection<PostViewModel> Posts
         {
             get { return _Posts; }
@@ -66,25 +70,25 @@ namespace ViewModels
             set { SetProperty(ref _Post, value); }
         }
 
-#endregion
+        #endregion
 
         #region Methods
 
-        public void Add()
+        public async void Add()
         {
             // Check if string is null or empty before adding
             if (!string.IsNullOrEmpty(Post.content))
             {
                 // Put Data in another object and save.
-                var person = new PostViewModel() { content = Post.content };
-                Posts.Insert(0, person);
-                Posts_Obj.Add(person);
-                Post.content = "";
+                var p = new PostViewModel() { content = Post.content };
+                var post = new PostViewModel() { content = Post.content };
+                var response = await Posts_Obj.Add(post);
+                if (response != null)
+                {
+                    Posts.Insert(0, p);
+                    Post.content = "";
+                }
             }
-        }
-        public void LoadMore()
-        {
-            Debug.WriteLine("LOAD MORE");
         }
         public async void GetPosts()
         {
@@ -96,10 +100,7 @@ namespace ViewModels
 
             if (response == null)
             {
-                /*********************************
-                 * TELL USER THERE IS NO DATA TO SHOW
-                 *********************************/
-                Debug.WriteLine("NULL");
+                Error = true;
             }
             else
             {
@@ -110,9 +111,6 @@ namespace ViewModels
                     var p = new PostViewModel(post);
                     _Posts.Add(p);
                 }
-
-                Last_Item = _Posts.LongCount();
-                Debug.WriteLine(Last_Item);
             }
         }
 
@@ -140,9 +138,6 @@ namespace ViewModels
                         var p = new PostViewModel(post);
                         _Posts.Add(p);
                     }
-
-                    Last_Item = _Posts.LongCount();
-                    Debug.WriteLine(Last_Item);
                 }
             }
         }

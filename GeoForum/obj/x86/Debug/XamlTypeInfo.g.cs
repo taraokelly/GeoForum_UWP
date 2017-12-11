@@ -156,25 +156,39 @@ namespace GeoForum.GeoForum_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[8];
+            _typeNameTable = new string[15];
             _typeNameTable[0] = "Converters.ObjectExistsToVisible";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "Converters.BoolToVisibilityConverter";
-            _typeNameTable[3] = "GeoForum.MainPage";
-            _typeNameTable[4] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[5] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[6] = "ViewModels.PostsViewModel";
-            _typeNameTable[7] = "ViewModels.NotificationBase";
+            _typeNameTable[3] = "PullToRefresh.UWP.PullToRefreshBox";
+            _typeNameTable[4] = "Windows.UI.Xaml.Controls.ContentControl";
+            _typeNameTable[5] = "Windows.UI.Xaml.DataTemplate";
+            _typeNameTable[6] = "Double";
+            _typeNameTable[7] = "PullToRefresh.UWP.PullRefreshProgressControl";
+            _typeNameTable[8] = "Windows.UI.Xaml.Controls.Control";
+            _typeNameTable[9] = "String";
+            _typeNameTable[10] = "GeoForum.MainPage";
+            _typeNameTable[11] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[12] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[13] = "ViewModels.PostsViewModel";
+            _typeNameTable[14] = "ViewModels.NotificationBase";
 
-            _typeTable = new global::System.Type[8];
+            _typeTable = new global::System.Type[15];
             _typeTable[0] = typeof(global::Converters.ObjectExistsToVisible);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::Converters.BoolToVisibilityConverter);
-            _typeTable[3] = typeof(global::GeoForum.MainPage);
-            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[5] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[6] = typeof(global::ViewModels.PostsViewModel);
-            _typeTable[7] = typeof(global::ViewModels.NotificationBase);
+            _typeTable[3] = typeof(global::PullToRefresh.UWP.PullToRefreshBox);
+            _typeTable[4] = typeof(global::Windows.UI.Xaml.Controls.ContentControl);
+            _typeTable[5] = typeof(global::Windows.UI.Xaml.DataTemplate);
+            _typeTable[6] = typeof(global::System.Double);
+            _typeTable[7] = typeof(global::PullToRefresh.UWP.PullRefreshProgressControl);
+            _typeTable[8] = typeof(global::Windows.UI.Xaml.Controls.Control);
+            _typeTable[9] = typeof(global::System.String);
+            _typeTable[10] = typeof(global::GeoForum.MainPage);
+            _typeTable[11] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[12] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[13] = typeof(global::ViewModels.PostsViewModel);
+            _typeTable[14] = typeof(global::ViewModels.NotificationBase);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -211,9 +225,11 @@ namespace GeoForum.GeoForum_XamlTypeInfo
 
         private object Activate_0_ObjectExistsToVisible() { return new global::Converters.ObjectExistsToVisible(); }
         private object Activate_2_BoolToVisibilityConverter() { return new global::Converters.BoolToVisibilityConverter(); }
-        private object Activate_3_MainPage() { return new global::GeoForum.MainPage(); }
-        private object Activate_6_PostsViewModel() { return new global::ViewModels.PostsViewModel(); }
-        private object Activate_7_NotificationBase() { return new global::ViewModels.NotificationBase(); }
+        private object Activate_3_PullToRefreshBox() { return new global::PullToRefresh.UWP.PullToRefreshBox(); }
+        private object Activate_7_PullRefreshProgressControl() { return new global::PullToRefresh.UWP.PullRefreshProgressControl(); }
+        private object Activate_10_MainPage() { return new global::GeoForum.MainPage(); }
+        private object Activate_13_PostsViewModel() { return new global::ViewModels.PostsViewModel(); }
+        private object Activate_14_NotificationBase() { return new global::ViewModels.NotificationBase(); }
 
         private global::Windows.UI.Xaml.Markup.IXamlType CreateXamlType(int typeIndex)
         {
@@ -243,32 +259,69 @@ namespace GeoForum.GeoForum_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 3:   //  GeoForum.MainPage
+            case 3:   //  PullToRefresh.UWP.PullToRefreshBox
+                userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.ContentControl"));
+                userType.Activator = Activate_3_PullToRefreshBox;
+                userType.AddMemberName("TopIndicatorTemplate");
+                userType.AddMemberName("RefreshThreshold");
+                xamlType = userType;
+                break;
+
+            case 4:   //  Windows.UI.Xaml.Controls.ContentControl
+                xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 5:   //  Windows.UI.Xaml.DataTemplate
+                xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 6:   //  Double
+                xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 7:   //  PullToRefresh.UWP.PullRefreshProgressControl
+                userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Control"));
+                userType.Activator = Activate_7_PullRefreshProgressControl;
+                userType.AddMemberName("Progress");
+                userType.AddMemberName("PullToRefreshText");
+                userType.AddMemberName("ReleaseToRefreshText");
+                xamlType = userType;
+                break;
+
+            case 8:   //  Windows.UI.Xaml.Controls.Control
+                xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 9:   //  String
+                xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
+                break;
+
+            case 10:   //  GeoForum.MainPage
                 userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_3_MainPage;
+                userType.Activator = Activate_10_MainPage;
                 userType.AddMemberName("PostsVM");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 4:   //  Windows.UI.Xaml.Controls.Page
+            case 11:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 5:   //  Windows.UI.Xaml.Controls.UserControl
+            case 12:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 6:   //  ViewModels.PostsViewModel
+            case 13:   //  ViewModels.PostsViewModel
                 userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("ViewModels.NotificationBase"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 7:   //  ViewModels.NotificationBase
+            case 14:   //  ViewModels.NotificationBase
                 userType = new global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_7_NotificationBase;
+                userType.Activator = Activate_14_NotificationBase;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
@@ -331,12 +384,62 @@ namespace GeoForum.GeoForum_XamlTypeInfo
             return foundXamlType;
         }
 
-        private object get_0_MainPage_PostsVM(object instance)
+        private object get_0_PullToRefreshBox_TopIndicatorTemplate(object instance)
+        {
+            var that = (global::PullToRefresh.UWP.PullToRefreshBox)instance;
+            return that.TopIndicatorTemplate;
+        }
+        private void set_0_PullToRefreshBox_TopIndicatorTemplate(object instance, object Value)
+        {
+            var that = (global::PullToRefresh.UWP.PullToRefreshBox)instance;
+            that.TopIndicatorTemplate = (global::Windows.UI.Xaml.DataTemplate)Value;
+        }
+        private object get_1_PullToRefreshBox_RefreshThreshold(object instance)
+        {
+            var that = (global::PullToRefresh.UWP.PullToRefreshBox)instance;
+            return that.RefreshThreshold;
+        }
+        private void set_1_PullToRefreshBox_RefreshThreshold(object instance, object Value)
+        {
+            var that = (global::PullToRefresh.UWP.PullToRefreshBox)instance;
+            that.RefreshThreshold = (global::System.Double)Value;
+        }
+        private object get_2_PullRefreshProgressControl_Progress(object instance)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            return that.Progress;
+        }
+        private void set_2_PullRefreshProgressControl_Progress(object instance, object Value)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            that.Progress = (global::System.Double)Value;
+        }
+        private object get_3_PullRefreshProgressControl_PullToRefreshText(object instance)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            return that.PullToRefreshText;
+        }
+        private void set_3_PullRefreshProgressControl_PullToRefreshText(object instance, object Value)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            that.PullToRefreshText = (global::System.String)Value;
+        }
+        private object get_4_PullRefreshProgressControl_ReleaseToRefreshText(object instance)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            return that.ReleaseToRefreshText;
+        }
+        private void set_4_PullRefreshProgressControl_ReleaseToRefreshText(object instance, object Value)
+        {
+            var that = (global::PullToRefresh.UWP.PullRefreshProgressControl)instance;
+            that.ReleaseToRefreshText = (global::System.String)Value;
+        }
+        private object get_5_MainPage_PostsVM(object instance)
         {
             var that = (global::GeoForum.MainPage)instance;
             return that.PostsVM;
         }
-        private void set_0_MainPage_PostsVM(object instance, object Value)
+        private void set_5_MainPage_PostsVM(object instance, object Value)
         {
             var that = (global::GeoForum.MainPage)instance;
             that.PostsVM = (global::ViewModels.PostsViewModel)Value;
@@ -349,11 +452,46 @@ namespace GeoForum.GeoForum_XamlTypeInfo
 
             switch (longMemberName)
             {
+            case "PullToRefresh.UWP.PullToRefreshBox.TopIndicatorTemplate":
+                userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PullToRefresh.UWP.PullToRefreshBox");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "TopIndicatorTemplate", "Windows.UI.Xaml.DataTemplate");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_0_PullToRefreshBox_TopIndicatorTemplate;
+                xamlMember.Setter = set_0_PullToRefreshBox_TopIndicatorTemplate;
+                break;
+            case "PullToRefresh.UWP.PullToRefreshBox.RefreshThreshold":
+                userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PullToRefresh.UWP.PullToRefreshBox");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "RefreshThreshold", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_1_PullToRefreshBox_RefreshThreshold;
+                xamlMember.Setter = set_1_PullToRefreshBox_RefreshThreshold;
+                break;
+            case "PullToRefresh.UWP.PullRefreshProgressControl.Progress":
+                userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PullToRefresh.UWP.PullRefreshProgressControl");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "Progress", "Double");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_2_PullRefreshProgressControl_Progress;
+                xamlMember.Setter = set_2_PullRefreshProgressControl_Progress;
+                break;
+            case "PullToRefresh.UWP.PullRefreshProgressControl.PullToRefreshText":
+                userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PullToRefresh.UWP.PullRefreshProgressControl");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "PullToRefreshText", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_3_PullRefreshProgressControl_PullToRefreshText;
+                xamlMember.Setter = set_3_PullRefreshProgressControl_PullToRefreshText;
+                break;
+            case "PullToRefresh.UWP.PullRefreshProgressControl.ReleaseToRefreshText":
+                userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("PullToRefresh.UWP.PullRefreshProgressControl");
+                xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "ReleaseToRefreshText", "String");
+                xamlMember.SetIsDependencyProperty();
+                xamlMember.Getter = get_4_PullRefreshProgressControl_ReleaseToRefreshText;
+                xamlMember.Setter = set_4_PullRefreshProgressControl_ReleaseToRefreshText;
+                break;
             case "GeoForum.MainPage.PostsVM":
                 userType = (global::GeoForum.GeoForum_XamlTypeInfo.XamlUserType)GetXamlTypeByName("GeoForum.MainPage");
                 xamlMember = new global::GeoForum.GeoForum_XamlTypeInfo.XamlMember(this, "PostsVM", "ViewModels.PostsViewModel");
-                xamlMember.Getter = get_0_MainPage_PostsVM;
-                xamlMember.Setter = set_0_MainPage_PostsVM;
+                xamlMember.Getter = get_5_MainPage_PostsVM;
+                xamlMember.Setter = set_5_MainPage_PostsVM;
                 break;
             }
             return xamlMember;

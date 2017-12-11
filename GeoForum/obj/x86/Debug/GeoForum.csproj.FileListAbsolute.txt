@@ -228,4 +228,3 @@ C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\De
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\System.Net.Http.Formatting\en-US\System.Net.Http.Properties.CommonWebApiResources.resw
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\System.Net.Http.Formatting\en-US\System.Net.Http.Properties.Resources.resw
 C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\GeoForum.csproj.GenerateResource.Cache
-C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\GeoForum.csprojResolveAssemblyReference.cache

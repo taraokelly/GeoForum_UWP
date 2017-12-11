@@ -27,10 +27,10 @@ namespace GeoForum
         }
         public PostsViewModel PostsVM { get; set; }
 
-        /*private void PullToRefreshBox_RefreshInvoked(DependencyObject sender, object args)
+        private void PullToRefreshBox_RefreshInvoked(DependencyObject sender, object args)
         {
-            //Organization.
-        }*/
+            PostsVM.RefreshPosts();
+        }
         // Adapted from: https://stackoverflow.com/questions/12683070/how-to-detect-if-the-scroll-viewer-reaches-bottom-in-winrt
         private void OnScrollViewerViewChanged(object sender, ScrollViewerViewChangedEventArgs e)
         {
@@ -46,7 +46,6 @@ namespace GeoForum
 
         private void refreshButton_Click(object sender, RoutedEventArgs e)
         {
-            Debug.WriteLine("Refresh");
             PostsVM.RefreshPosts();
         }
     }

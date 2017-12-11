@@ -90,18 +90,7 @@ namespace Data
                 return null;
             }
         }
-        public static void AddPost(Post post)
-        {
-            Debug.WriteLine("Add post");
-            var list = new List<float>(2);
-            // Add latitude to list.
-            list.Add(-81f);
-            // Add longtitude to list.
-            list.Add(26f);
-            // Then set list to equal posts coords
-            // Send post in post req
 
-        }
         public async Task<List<Post>> GetMorePosts(string urlData)
         {
             if (!accessAllowed) return null;
@@ -128,6 +117,64 @@ namespace Data
             else
             {
                 return null;
+            }
+        }
+
+        public async Task<Post> AddPost(Post post)
+        {
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            accessAllowed = false;
+
+            switch (accessStatus)
+            {
+                case GeolocationAccessStatus.Allowed:
+
+                    accessAllowed = true;
+
+                    var geoLocator = new Geolocator();
+                    geoLocator.DesiredAccuracy = PositionAccuracy.Default;
+                    Geoposition pos = await geoLocator.GetGeopositionAsync();
+                    latitude = pos.Coordinate.Point.Position.Latitude.ToString();
+                    longitude = pos.Coordinate.Point.Position.Longitude.ToString();
+
+                    break;
+
+                case GeolocationAccessStatus.Denied:
+                    break;
+
+                case GeolocationAccessStatus.Unspecified:
+                    break;
+            }
+
+            if (!accessAllowed) return null;
+
+            if (string.IsNullOrEmpty(latitude) || string.IsNullOrEmpty(longitude)) return null;
+
+            this.client = new HttpClient();
+            this.client.DefaultRequestHeaders.Accept.Clear();
+            this.client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+            var list = new List<float>(2);
+            list.Add(-81f);
+            list.Add(26f);
+            post.geometry = new Geometry { coordinates = list };
+
+            client.BaseAddress = new Uri(baseUrl);
+
+            HttpContent content = new StringContent(JsonConvert.SerializeObject(post), Encoding.UTF8, "application/json");
+            HttpResponseMessage response = await client.PostAsync("",content);
+
+            if (response.IsSuccessStatusCode)
+            {
+                return await response.Content.ReadAsAsync<Post>();
+                /*var res = await response.Content.ReadAsStringAsync();
+                Debug.WriteLine(res);*/
+            }
+            else
+            {
+                return null;
+                //Debug.WriteLine("We done fucked up");
             }
         }
 

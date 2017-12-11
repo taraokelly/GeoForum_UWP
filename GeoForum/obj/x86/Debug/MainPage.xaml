@@ -16,12 +16,12 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">-->
-        <ScrollViewer x:ConnectionId='2' x:Name="MyScrollView"                                        >
+       <pr:PullToRefreshBox x:ConnectionId='2' x:Name="pr"                                                 >
+        <ScrollViewer x:ConnectionId='3' x:Name="MyScrollView"                                        >
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
                         <TextBlock Text="GeoForum" HorizontalAlignment="Center" VerticalAlignment="Top" Foreground="White" FontSize="30"/>
-                        <Button x:ConnectionId='10' Name="refreshButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0"                            >
+                        <Button x:ConnectionId='12' Name="refreshButton"  IsEnabled="True" BorderThickness="0" BorderBrush="DarkGreen" Foreground="White" Background="Transparent" Width="40"  Height="40" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,2.5,20,0"                            >
                             <Viewbox>
                                 <SymbolIcon Symbol="Refresh"/>
                             </Viewbox>
@@ -30,17 +30,16 @@
                     <StackPanel Orientation="Vertical" MaxWidth="750" Margin="10,20,10,0">
                         <Grid HorizontalAlignment="Stretch">
                             <StackPanel>
-                                <TextBox x:ConnectionId='8'                                                                    BorderBrush="DarkGreen" Margin="5"/>
-                            <Button x:ConnectionId='9' Content="ADD"                              Margin="5" HorizontalAlignment="Center" Foreground="White" Background="Green" BorderBrush="DarkGreen"/>
+                                <TextBox x:ConnectionId='10'                                                                    BorderBrush="DarkGreen" Margin="5"/>
+                            <Button x:ConnectionId='11' Content="ADD"                              Margin="5" HorizontalAlignment="Center" Foreground="White" Background="Green" BorderBrush="DarkGreen"/>
                             </StackPanel>
                         </Grid>
-                    <ListView x:ConnectionId='3' x:Name="MainList"                                                   HorizontalAlignment="Stretch" Margin="5,10,0,5" >
-                        <!--<ListView x:Name="MainList" ItemsSource="{x:Bind PostsVM.Posts, Mode=OneWay}" SelectedIndex="{x:Bind PostsVM.SelectedIndex, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >-->
-                            <ListView.ItemTemplate>
+                    <ListView x:ConnectionId='4' x:Name="MainList"                                                   HorizontalAlignment="Stretch" Margin="5,10,0,5" >
+                        <ListView.ItemTemplate>
                                 <DataTemplate                                       >
-                                    <Grid x:ConnectionId='5'>
+                                    <Grid x:ConnectionId='7'>
                                         <StackPanel >
-                                            <TextBlock x:ConnectionId='6' TextWrapping="Wrap" FontSize="15" FontWeight="SemiBold"                                      Padding="0,0,0,10" />
+                                            <TextBlock x:ConnectionId='8' TextWrapping="Wrap" FontSize="15" FontWeight="SemiBold"                                      Padding="0,0,0,10" />
                                             <Grid Margin="0" Padding="0,2.5,0,0" Height="17.5" BorderBrush="LightGray" BorderThickness="0,1,0,0">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="1*" />
@@ -48,7 +47,7 @@
                                                     <ColumnDefinition Width="2*" />
                                                 </Grid.ColumnDefinitions>
                                                 <TextBlock Grid.Column="0" Foreground="Green" FontSize="11" Text="Miles:"  Margin="0" Width="50"/>
-                                                <TextBlock x:ConnectionId='7' Grid.Column="1" Foreground="Gray" FontSize="11"                                 />
+                                                <TextBlock x:ConnectionId='9' Grid.Column="1" Foreground="Gray" FontSize="11"                                 />
                                             </Grid>
                                         </StackPanel>
                                     </Grid>
@@ -66,19 +65,25 @@
                                 </Style>
                             </ListView.ItemContainerStyle>
                         </ListView>
-                    <Image x:ConnectionId='4' Height="35" Width="35" Source="Images/loading_apple.gif"                                                                                                     ></Image>
-                    <!-- <Button Content="LOAD MORE" Click="{x:Bind PostsVM.LoadMore}" Visibility="{x:Bind PostsVM.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button> -->
-                    </StackPanel>
+                    <Image x:ConnectionId='5' Height="35" Width="35" Source="Images/loading_apple.gif"                                                                                                     ></Image>
+                    <TextBlock x:ConnectionId='6' TextWrapping="Wrap"                                                                                                  >
+                        <Run Text="This app is not able to access your Location or your Internet. Go to " />
+                          <Hyperlink NavigateUri="ms-settings:">
+                              <Run Text="Settings" />
+                          </Hyperlink>
+                        <Run Text=" to check the location and internet settings."/>
+                    </TextBlock>
+                </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <!-- <pr:PullToRefreshBox.TopIndicatorTemplate>
+             <pr:PullToRefreshBox.TopIndicatorTemplate>
                 <DataTemplate>
                     <pr:PullRefreshProgressControl Progress="{Binding}"
                                                                PullToRefreshText="Pull"
                                                                ReleaseToRefreshText="Release"/>
                 </DataTemplate>
             </pr:PullToRefreshBox.TopIndicatorTemplate>
-        </pr:PullToRefreshBox> -->
+        </pr:PullToRefreshBox> 
     </Grid>
 
 </Page>

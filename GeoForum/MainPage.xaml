@@ -16,7 +16,7 @@
     </Page.Resources>
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <!--<pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">-->
+       <pr:PullToRefreshBox x:Name="pr" RefreshInvoked="PullToRefreshBox_RefreshInvoked">
         <ScrollViewer x:Name="MyScrollView" ViewChanged="OnScrollViewerViewChanged">
                 <StackPanel HorizontalAlignment="Stretch">
                     <Grid Background="Black" Padding="0,0,0,2">
@@ -35,8 +35,7 @@
                             </StackPanel>
                         </Grid>
                     <ListView x:Name="MainList" ItemsSource="{x:Bind PostsVM.Posts, Mode=OneWay}" HorizontalAlignment="Stretch" Margin="5,10,0,5" >
-                        <!--<ListView x:Name="MainList" ItemsSource="{x:Bind PostsVM.Posts, Mode=OneWay}" SelectedIndex="{x:Bind PostsVM.SelectedIndex, Mode=TwoWay}" HorizontalAlignment="Stretch" Margin="5,10,5,5" >-->
-                            <ListView.ItemTemplate>
+                        <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="viewModels:PostViewModel" >
                                     <Grid>
                                         <StackPanel >
@@ -67,18 +66,24 @@
                             </ListView.ItemContainerStyle>
                         </ListView>
                     <Image Height="35" Width="35" Source="Images/loading_apple.gif" Visibility="{x:Bind PostsVM.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Image>
-                    <!-- <Button Content="LOAD MORE" Click="{x:Bind PostsVM.LoadMore}" Visibility="{x:Bind PostsVM.IsVisible, Converter={StaticResource VisibilityConverter}, Mode=OneWay}"></Button> -->
-                    </StackPanel>
+                    <TextBlock TextWrapping="Wrap" Visibility="{x:Bind PostsVM.Error, Converter={StaticResource VisibilityConverter}, Mode=OneWay}" >
+                        <Run Text="This app is not able to access your Location or your Internet. Go to " />
+                          <Hyperlink NavigateUri="ms-settings:">
+                              <Run Text="Settings" />
+                          </Hyperlink>
+                        <Run Text=" to check the location and internet settings."/>
+                    </TextBlock>
+                </StackPanel>
                 </StackPanel>
             </ScrollViewer>
-            <!-- <pr:PullToRefreshBox.TopIndicatorTemplate>
+             <pr:PullToRefreshBox.TopIndicatorTemplate>
                 <DataTemplate>
                     <pr:PullRefreshProgressControl Progress="{Binding}"
                                                                PullToRefreshText="Pull"
                                                                ReleaseToRefreshText="Release"/>
                 </DataTemplate>
             </pr:PullToRefreshBox.TopIndicatorTemplate>
-        </pr:PullToRefreshBox> -->
+        </pr:PullToRefreshBox> 
     </Grid>
 
 </Page>

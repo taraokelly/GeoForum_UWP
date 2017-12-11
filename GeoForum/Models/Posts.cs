@@ -88,34 +88,25 @@ namespace Models
             {
                 foreach (var post in response)
                 {
-                    //Debug.WriteLine(post.date);
                     posts.Add(post);
                 }
             }
             return response;
         }
-        public void Add(Post person)
+        public async Task<Post> Add(Post post)
         {
-            if (!posts.Contains(person))
+            if (!posts.Contains(post))
             {
+                var response = await APIService.AddPost(post);
                 // Insert at top of list.
-                posts.Insert(0, person);
-                APIService.AddPost(person);
+                if (response != null)
+                {
+                    posts.Insert(0, post);
+                    return response;
+                }
             }
+            return null;
         }
-        /*public void Delete(Post person)
-        {
-            if (posts.Contains(person))
-            {
-                posts.Remove(person);
-                APIService.Delete(person);
-            }
-        }
-        /*public void Update(Post person)
-        {
-            APIService.Write(person);
-        }*/
-
         #endregion
     }
 }
