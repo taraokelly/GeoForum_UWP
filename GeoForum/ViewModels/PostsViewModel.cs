@@ -1,16 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using System.Linq;
 using System.Collections.ObjectModel;
 using Models;
-using Windows.UI.Core;
-using Windows.UI.Xaml.Input;
-using System.Diagnostics;
-using Windows.UI.Xaml;
-using Windows.System;
 
 namespace ViewModels
 {

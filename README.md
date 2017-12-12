@@ -10,7 +10,7 @@
 
 ## About
 
-GeoForum is an Universal Windows Application that let's you anonymously converse with people in your area - 100,000 metres to be precise. GeoForum works by sending and retrieving forum post to the [GeoForumAPI](https://github.com/taraokelly/GeoForum_Backend) built with Express.js and MongoDB. The GeoForumAPI has been hosted on Azure. However, if you would like to download and run the backend yourself, follow the [user guide](https://github.com/taraokelly/GeoForum_Backend#user-guide). This project has been undertaken as an assignment assisting the learning of application development.
+GeoForum is an Universal Windows Application that let's you anonymously converse with people in your area - 100,000 metres to be precise. GeoForum works by sending and retrieving forum post to the [GeoForumAPI](https://github.com/taraokelly/GeoForum_Backend) built with Express.js and MongoDB. The GeoForumAPI has been hosted on Heroku (sorry Damien). However, if you would like to download and run the backend yourself, follow the [user guide](https://github.com/taraokelly/GeoForum_Backend#user-guide). This project has been undertaken as an assignment assisting the learning of application development.
 
 ## Project Specification
 

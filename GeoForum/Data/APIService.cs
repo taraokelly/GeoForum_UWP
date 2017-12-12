@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Windows.Devices.Geolocation;
-using System.Diagnostics;
 using Models;
 using System.Net.Http;
 using Newtonsoft.Json;
 using System.Net.Http.Headers;
-using Windows.System;
 
 namespace Data
 {
@@ -24,7 +21,7 @@ namespace Data
         #region Variables
 
         private HttpClient client;
-        private string baseUrl = "http://localhost:4000/";
+        private static readonly string baseUrl = "https://salty-ridge-39119.herokuapp.com/";
         string latitude;
         string longitude;
         bool accessAllowed;
