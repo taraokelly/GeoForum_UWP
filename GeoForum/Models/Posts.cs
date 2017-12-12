@@ -31,6 +31,8 @@ namespace Models
 
         public async Task<List<Post>> GetPosts()
         {
+            posts.Clear();
+
             var response = await APIService.GetPosts();
 
             if (response != null)
@@ -43,22 +45,7 @@ namespace Models
             }
             return response;
         }
-        public async Task<List<Post>> RefreshPosts()
-        {
-            posts.Clear();
-
-            var response = await APIService.GetPosts();
-
-            if (response != null)
-            {
-                foreach (var post in response)
-                {
-                    Debug.WriteLine(post.content);
-                    posts.Add(post);
-                }
-            }
-            return response;
-        }
+    
         public async Task<List<Post>> GetMorePosts()
         {
             string urlData = "";

@@ -37,34 +37,11 @@ namespace Data
 
         #endregion
 
-        #region Methods
+        #region API Methods
 
         public async Task<List<Post>> GetPosts()
         {
-            var accessStatus = await Geolocator.RequestAccessAsync();
-
-            accessAllowed = false;
-
-            switch (accessStatus)
-            {
-                case GeolocationAccessStatus.Allowed:
-
-                    accessAllowed = true;
-
-                    var geoLocator = new Geolocator();
-                    geoLocator.DesiredAccuracy = PositionAccuracy.Default;
-                    Geoposition pos = await geoLocator.GetGeopositionAsync();
-                    latitude = pos.Coordinate.Point.Position.Latitude.ToString();
-                    longitude = pos.Coordinate.Point.Position.Longitude.ToString();
-
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    break;
-            }
+            accessAllowed = await GetLocation();
 
             if (!accessAllowed) return null;
 
@@ -120,30 +97,7 @@ namespace Data
 
         public async Task<Post> AddPost(Post post)
         {
-            var accessStatus = await Geolocator.RequestAccessAsync();
-
-            accessAllowed = false;
-
-            switch (accessStatus)
-            {
-                case GeolocationAccessStatus.Allowed:
-
-                    accessAllowed = true;
-
-                    var geoLocator = new Geolocator();
-                    geoLocator.DesiredAccuracy = PositionAccuracy.Default;
-                    Geoposition pos = await geoLocator.GetGeopositionAsync();
-                    latitude = pos.Coordinate.Point.Position.Latitude.ToString();
-                    longitude = pos.Coordinate.Point.Position.Longitude.ToString();
-
-                    break;
-
-                case GeolocationAccessStatus.Denied:
-                    break;
-
-                case GeolocationAccessStatus.Unspecified:
-                    break;
-            }
+            accessAllowed = await GetLocation();
 
             if (!accessAllowed) return null;
 
@@ -171,6 +125,39 @@ namespace Data
             {
                 return null;
             }
+        }
+
+        #endregion
+
+        #region Helper Methods
+
+        public async Task<bool> GetLocation()
+        {
+            var accessStatus = await Geolocator.RequestAccessAsync();
+
+            var accessAllowed = false;
+
+            switch (accessStatus)
+            {
+                case GeolocationAccessStatus.Allowed:
+
+                    accessAllowed = true;
+
+                    var geoLocator = new Geolocator();
+                    geoLocator.DesiredAccuracy = PositionAccuracy.Default;
+                    Geoposition pos = await geoLocator.GetGeopositionAsync();
+                    latitude = pos.Coordinate.Point.Position.Latitude.ToString();
+                    longitude = pos.Coordinate.Point.Position.Longitude.ToString();
+
+                    break;
+
+                case GeolocationAccessStatus.Denied:
+                    break;
+
+                case GeolocationAccessStatus.Unspecified:
+                    break;
+            }
+            return accessAllowed;
         }
 
         #endregion

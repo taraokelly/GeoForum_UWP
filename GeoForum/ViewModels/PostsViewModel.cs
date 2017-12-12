@@ -92,6 +92,8 @@ namespace ViewModels
         }
         public async void GetPosts()
         {
+            _Posts.Clear();
+
             _LoadMore = true;
             Error = false;
             IsVisible = true;
@@ -136,32 +138,6 @@ namespace ViewModels
                         var p = new PostViewModel(post);
                         _Posts.Add(p);
                     }
-                }
-            }
-        }
-
-        public async void RefreshPosts()
-        {
-            _Posts.Clear();
-
-            _LoadMore = true;
-            Error = false;
-            IsVisible = true;
-            var response = await Posts_Obj.RefreshPosts();
-            IsVisible = false;
-
-            if (response == null)
-            {
-                Error = true;
-            }
-            else
-            {
-                if (response.LongCount() == 0) _LoadMore = false;
-                // Load the database - Really from the Model that has loaded the db.
-                foreach (var post in Posts_Obj.posts)
-                {
-                    var p = new PostViewModel(post);
-                    _Posts.Add(p);
                 }
             }
         }
