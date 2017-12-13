@@ -1,0 +1,2 @@
+MainPackage=C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x64\Release\GeoForum_1.1.1.0_x64.appx
+SymbolPackage=C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\AppPackages\GeoForum_1.1.1.0_Test\GeoForum_1.1.1.0_x64.appxsym

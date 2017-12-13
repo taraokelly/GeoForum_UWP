@@ -10,13 +10,13 @@
     <PackageArchitecture>x86</PackageArchitecture>
     <PackageIdentityName>54a2bb96-c56d-407f-81e2-3d239db34748</PackageIdentityName>
     <PackageIdentityPublisher>CN=Tara</PackageIdentityPublisher>
-    <IntermediateOutputPath>C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\</IntermediateOutputPath>
+    <IntermediateOutputPath>C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\obj\x86\Debug\</IntermediateOutputPath>
     <RemoteDeploymentType>
     </RemoteDeploymentType>
     <PackageRegistrationPath>
     </PackageRegistrationPath>
     <RemoveNonLayoutFiles>true</RemoveNonLayoutFiles>
-    <RegisteredManifestChecksum>EE2C1DB652E637D86C5320AB6898843398386A52023A55653009E49992BE9BD4</RegisteredManifestChecksum>
+    <RegisteredManifestChecksum>60A665E7D73E9310C298FB36C9D5F234A9F2401567AEB8518F66E88C7D82D950</RegisteredManifestChecksum>
     <RegisteredPackageMoniker>54a2bb96-c56d-407f-81e2-3d239db34748_1.0.0.0_x86__t07fbsmg8205t</RegisteredPackageMoniker>
     <RegisteredUserModeAppID>54a2bb96-c56d-407f-81e2-3d239db34748_t07fbsmg8205t!App</RegisteredUserModeAppID>
     <RegisteredPackageID>54a2bb96-c56d-407f-81e2-3d239db34748</RegisteredPackageID>
@@ -25,16 +25,16 @@
     <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
   </PropertyGroup>
   <ItemGroup>
-    <AppXManifest Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\AppxManifest.xml">
+    <AppXManifest Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\AppxManifest.xml">
       <PackagePath>AppxManifest.xml</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-12T20:42:33.462</Modified>
+      <Modified>2017-12-13T14:07:59.006</Modified>
     </AppXManifest>
   </ItemGroup>
   <ItemGroup>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.exe">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.exe">
       <PackagePath>entrypoint\GeoForum.exe</PackagePath>
-      <Modified>2017-12-12T20:42:32.880</Modified>
+      <Modified>2017-12-13T14:07:00.268</Modified>
     </AppxPackagedFile>
     <AppxPackagedFile Include="C:\Users\Tara\.nuget\packages\Microsoft.AspNet.WebApi.Client\5.2.3\lib\portable-wp8+netcore45+net45+wp81+wpa81\System.Net.Http.Formatting.dll">
       <PackagePath>System.Net.Http.Formatting.dll</PackagePath>
@@ -532,49 +532,49 @@
       <PackagePath>PullToRefresh.UWP.winmd</PackagePath>
       <Modified>2016-03-16T11:42:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Images\loading_apple.gif">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Images\loading_apple.gif">
       <PackagePath>Images\loading_apple.gif</PackagePath>
       <Modified>2017-12-10T19:01:52.506</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Properties\Default.rd.xml">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Properties\Default.rd.xml">
       <PackagePath>Properties\Default.rd.xml</PackagePath>
       <Modified>2017-12-06T12:35:24.030</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\LockScreenLogo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\LockScreenLogo.scale-200.png">
       <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:53:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\SplashScreen.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\SplashScreen.scale-200.png">
       <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:50:34.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\Square150x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\Square150x150Logo.scale-200.png">
       <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:41:48.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\Square44x44Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\Square44x44Logo.scale-200.png">
       <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:43:38.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
       <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:39:56.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\StoreLogo.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\StoreLogo.png">
       <PackagePath>Assets\StoreLogo.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T13:25:42.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\Assets\Wide310x150Logo.scale-200.png">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\Assets\Wide310x150Logo.scale-200.png">
       <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2015-09-20T17:30:08.000</Modified>
+      <Modified>2017-12-13T14:05:24.245</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.xr.xml">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\GeoForum.xr.xml">
       <PackagePath>GeoForum.xr.xml</PackagePath>
       <Modified>2017-12-11T22:25:13.996</Modified>
     </AppxPackagedFile>
@@ -590,14 +590,14 @@
       <PackagePath>PullToRefresh.UWP\Properties\PullToRefresh.UWP.rd.xml</PackagePath>
       <Modified>2016-03-16T11:42:10.000</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\resources.pri">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\resources.pri">
       <PackagePath>resources.pri</PackagePath>
       <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
-      <Modified>2017-12-11T22:31:37.367</Modified>
+      <Modified>2017-12-13T14:07:56.222</Modified>
     </AppxPackagedFile>
-    <AppxPackagedFile Include="C:\Users\Tara\Documents\Visual Studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\GeoForum.exe">
+    <AppxPackagedFile Include="C:\Users\Tara\documents\visual studio 2015\Projects\GeoForum\GeoForum\bin\x86\Debug\Core\GeoForum.exe">
       <PackagePath>GeoForum.exe</PackagePath>
-      <Modified>2017-12-12T20:42:33.457</Modified>
+      <Modified>2017-12-13T14:07:59.003</Modified>
     </AppxPackagedFile>
   </ItemGroup>
   <ItemGroup>
