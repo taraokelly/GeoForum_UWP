@@ -1,6 +1,6 @@
 # GeoForum
 
-*GeoForum UWP Application.*
+*GeoForum UWP Application. Fourth Year, Mobile Application Development, Software Development.*
 
 ## Table of Contents
 
@@ -33,3 +33,7 @@ in C# to be able to interact with a UWP. The preferred cloud to use is Azure.
 + Anonymous posts.
 + Refresh capabilities.
 + Lazy loading.
+
+-----
+
+__*Tara O'Kelly - G00322214@gmit.ie*__
